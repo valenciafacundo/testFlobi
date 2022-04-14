@@ -1,20 +1,41 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-
+import { NavigationContainer } from "@react-navigation/native";
+import AutenticadoScreens from "./stacks/AutenticadoScreens";
+import * as Linking from "expo-linking";
+const prefix = Linking.createURL("/");
 export default function App() {
+  const config = {
+    screens:{
+      MensajesMap:{
+        path:"mensajesMap",
+        screens:{
+          Mensajes:"mensajes",
+          Chat:"chat",
+        }
+      },
+      TorneosMap:{
+        path:"torneosMap",
+        
+        }
+      ,
+      HomeMap:{
+        path:"homeMap"
+      },
+      ClubesMap:{
+        path:"clubesMap"
+      },
+      PerfilMap:{
+        path:"perfilMap"
+      }
+    }
+  }
+  
+  const linking = {
+    prefixes: prefix,
+    config,
+  };
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer linking={linking}>
+      {AutenticadoScreens()}
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

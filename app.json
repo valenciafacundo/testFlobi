@@ -1,5 +1,6 @@
 {
   "expo": {
+    "scheme": "myflobi",
     "name": "my-flobi",
     "slug": "my-flobi",
     "version": "1.0.0",
